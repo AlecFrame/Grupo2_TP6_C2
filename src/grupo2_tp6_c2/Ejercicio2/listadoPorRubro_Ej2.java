@@ -16,7 +16,8 @@ public class listadoPorRubro_Ej2 extends javax.swing.JInternalFrame {
     public listadoPorRubro_Ej2(TreeSet<Producto_Ej2> lista) {
         initComponents();
         this.lista = lista;
-        
+        setClosable(true);
+        setDefaultCloseOperation(listadoPorRubro_Ej2.DISPOSE_ON_CLOSE);
         armarCabecera();
         cargaTabla();
     }

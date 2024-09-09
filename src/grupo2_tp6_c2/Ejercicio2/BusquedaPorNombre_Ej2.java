@@ -17,7 +17,8 @@ public class BusquedaPorNombre_Ej2 extends javax.swing.JInternalFrame {
     public BusquedaPorNombre_Ej2(TreeSet<Producto_Ej2> lista) {
         initComponents();
         this.lista = lista;
-        this.setDefaultCloseOperation(BusquedaPorNombre_Ej2.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(BusquedaPorNombre_Ej2.DISPOSE_ON_CLOSE);
         
         armarCabecera();
         cargaTabla();
