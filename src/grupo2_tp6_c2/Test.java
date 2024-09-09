@@ -8,9 +8,6 @@ public class Test {
         Principal v1 = new Principal();
         v1.setVisible(true);
         
-        Ppal_SuperDeTodo_Ej2 v2 = new Ppal_SuperDeTodo_Ej2();
-        v2.setVisible(true);
-        
     }
     
 }

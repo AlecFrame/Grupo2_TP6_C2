@@ -1,5 +1,5 @@
 
-package grupo2_tp6_c2;
+package grupo2_tp6_c2.Ejercicio1;
 
 import java.util.Objects;
 

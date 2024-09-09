@@ -169,7 +169,7 @@
                       <Font name="Tahoma" size="18" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/grupo2_tp6_c2/box.png"/>
+                      <Image iconType="3" name="/grupo2_tp6_c2/Ejercicio1/box.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Productos"/>
                   </Properties>
@@ -286,7 +286,7 @@
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/grupo2_tp6_c2/Carrito compras.png"/>
+                      <Image iconType="3" name="/grupo2_tp6_c2/Ejercicio1/Carrito compras.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Agregar"/>
                   </Properties>

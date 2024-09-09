@@ -1,6 +1,9 @@
 
 package grupo2_tp6_c2;
 
+import grupo2_tp6_c2.Ejercicio1.Ventana;
+import grupo2_tp6_c2.Ejercicio2.Ppal_SuperDeTodo_Ej2;
+
 public class Principal extends javax.swing.JFrame {
 
     public Principal() {
@@ -92,7 +95,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbEj1ActionPerformed
 
     private void jbEj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEj2ActionPerformed
-        busquedaPorNombre busqueda2 = new busquedaPorNombre();
+        Ppal_SuperDeTodo_Ej2 busqueda2 = new Ppal_SuperDeTodo_Ej2();
         busqueda2.setVisible(true);
     }//GEN-LAST:event_jbEj2ActionPerformed
     

@@ -1,5 +1,5 @@
 
-package grupo2_tp6_c2;
+package grupo2_tp6_c2.Ejercicio2;
 
 
 public class Producto_Ej2 implements Comparable<Producto_Ej2>{
@@ -7,18 +7,14 @@ public class Producto_Ej2 implements Comparable<Producto_Ej2>{
     private String descripcion;
     private double precio;
     private int stock;
-    private Categoria_Ej2 rubro;
+    private String rubro;
 
-    public Producto_Ej2(int codigo, String descripcion, double precio, int stock, Categoria_Ej2 rubro) {
+    public Producto_Ej2(int codigo, String descripcion, double precio, int stock, String rubro) {
         this.codigo2 = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
         this.rubro = rubro;
-    }
-
-    Producto_Ej2(int i, String azucar_x_1kg, int i0, Categoria_Ej2 categoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getCodigo() {
@@ -53,11 +49,11 @@ public class Producto_Ej2 implements Comparable<Producto_Ej2>{
         this.stock = stock;
     }
 
-    public Categoria_Ej2 getRubro() {
+    public String getRubro() {
         return rubro;
     }
 
-    public void setRubro(Categoria_Ej2 rubro) {
+    public void setRubro(String rubro) {
         this.rubro = rubro;
     }
 

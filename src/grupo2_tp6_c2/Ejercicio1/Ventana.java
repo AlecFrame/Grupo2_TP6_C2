@@ -1,5 +1,5 @@
 
-package grupo2_tp6_c2;
+package grupo2_tp6_c2.Ejercicio1;
 
 import java.util.HashSet;
 import javax.swing.JOptionPane;
@@ -84,7 +84,7 @@ public class Ventana extends javax.swing.JFrame {
 
         jLbTitulo.setBackground(new java.awt.Color(255, 255, 255));
         jLbTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLbTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grupo2_tp6_c2/box.png"))); // NOI18N
+        jLbTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grupo2_tp6_c2/Ejercicio1/box.png"))); // NOI18N
         jLbTitulo.setText("Gestión de Productos");
 
         javax.swing.GroupLayout jPtituloLayout = new javax.swing.GroupLayout(jPtitulo);
@@ -123,7 +123,7 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         jbAgregar.setBackground(new java.awt.Color(204, 204, 204));
-        jbAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grupo2_tp6_c2/Carrito compras.png"))); // NOI18N
+        jbAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grupo2_tp6_c2/Ejercicio1/Carrito compras.png"))); // NOI18N
         jbAgregar.setText("Agregar");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
