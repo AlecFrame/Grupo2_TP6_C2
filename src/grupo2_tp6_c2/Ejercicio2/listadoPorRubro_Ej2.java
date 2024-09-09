@@ -18,6 +18,7 @@ public class listadoPorRubro_Ej2 extends javax.swing.JInternalFrame {
         this.lista = lista;
         setClosable(true);
         setDefaultCloseOperation(listadoPorRubro_Ej2.DISPOSE_ON_CLOSE);
+        
         armarCabecera();
         cargaTabla();
     }

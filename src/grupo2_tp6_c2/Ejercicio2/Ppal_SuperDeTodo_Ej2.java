@@ -41,6 +41,11 @@ public class Ppal_SuperDeTodo_Ej2 extends javax.swing.JFrame {
         jMenuAdmin.setText("Administración");
 
         jAdminProductos.setText("Productos");
+        jAdminProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAdminProductosActionPerformed(evt);
+            }
+        });
         jMenuAdmin.add(jAdminProductos);
 
         jMenuBar.add(jMenuAdmin);
@@ -110,11 +115,20 @@ public class Ppal_SuperDeTodo_Ej2 extends javax.swing.JFrame {
     private void jConsultaPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultaPrecioActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        listadoPorRubro_Ej2 bpn = new listadoPorRubro_Ej2(listaProductos);
+        BusquedaPorPrecio_Ej2 bpn = new BusquedaPorPrecio_Ej2(listaProductos);
         bpn.setVisible(true);
         escritorio.add(bpn);
         escritorio.moveToFront(bpn);
     }//GEN-LAST:event_jConsultaPrecioActionPerformed
+
+    private void jAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdminProductosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionDeProductos_Ej2 bpn = new GestionDeProductos_Ej2(listaProductos);
+        bpn.setVisible(true);
+        escritorio.add(bpn);
+        escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jAdminProductosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
