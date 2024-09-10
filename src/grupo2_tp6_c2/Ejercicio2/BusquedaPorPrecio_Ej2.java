@@ -30,29 +30,18 @@ public class BusquedaPorPrecio_Ej2 extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jlListado = new javax.swing.JLabel();
-        jlEntre = new javax.swing.JLabel();
-        jbBusqueda = new javax.swing.JButton();
-        jtfDesde = new javax.swing.JTextField();
-        jlY = new javax.swing.JLabel();
-        jtfHasta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tProducto = new javax.swing.JTable();
+        jbBusqueda = new javax.swing.JButton();
+        jtfHasta = new javax.swing.JTextField();
+        jlY = new javax.swing.JLabel();
+        jtfDesde = new javax.swing.JTextField();
+        jlEntre = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(237, 232, 255));
 
         jlListado.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jlListado.setText("Listado por Precio");
-
-        jlEntre.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jlEntre.setText("Entre");
-
-        jbBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grupo2_tp6_c2/Ejercicio2/Lupita.png"))); // NOI18N
-        jbBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbBusquedaActionPerformed(evt);
-            }
-        });
-
-        jlY.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jlY.setText("y");
 
         tProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -65,52 +54,65 @@ public class BusquedaPorPrecio_Ej2 extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tProducto.setPreferredSize(new java.awt.Dimension(561, 427));
         jScrollPane1.setViewportView(tProducto);
+
+        jbBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grupo2_tp6_c2/Ejercicio2/Lupita.png"))); // NOI18N
+        jbBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBusquedaActionPerformed(evt);
+            }
+        });
+
+        jlY.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jlY.setText("y");
+
+        jlEntre.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jlEntre.setText("Entre:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlListado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jlEntre)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jlY)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)))
-                .addComponent(jbBusqueda)
-                .addGap(24, 24, 24))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlEntre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jlY)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtfHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlListado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlListado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlY)
-                            .addComponent(jlEntre)))
-                    .addComponent(jbBusqueda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jtfDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlEntre))))
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -122,16 +124,16 @@ public class BusquedaPorPrecio_Ej2 extends javax.swing.JInternalFrame {
             Long hasta = Long.parseLong(jtfHasta.getText());
             borrarFilas();
             for (Producto_Ej2 p: lista){
-               if((desde<=p.getPrecio()&hasta>=p.getPrecio())||(desde>=p.getPrecio()&hasta<=p.getPrecio())){
-                   modelo.addRow(new Object[]{
-                       p.getCodigo(),
-                       p.getDescripcion(),
-                       p.getPrecio(),
-                       p.getStock(),
-                       p.getRubro()
-                   });
-               }
-            } 
+                if((desde<=p.getPrecio()&hasta>=p.getPrecio())||(desde>=p.getPrecio()&hasta<=p.getPrecio())){
+                    modelo.addRow(new Object[]{
+                        p.getCodigo(),
+                        p.getDescripcion(),
+                        p.getPrecio(),
+                        p.getStock(),
+                        p.getRubro()
+                    });
+                }
+            }
         }catch(Exception e) {
             JOptionPane.showMessageDialog(this, "Ingrese valores válidos");
         }
