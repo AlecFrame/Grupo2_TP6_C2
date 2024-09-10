@@ -114,15 +114,7 @@ public class BusquedaPorNombre_Ej2 extends javax.swing.JInternalFrame {
         borrarFilas(); 
         
         for(Producto_Ej2 prod : Ppal_SuperDeTodo_Ej2.listaProductos){  //Método para buscar productos colocando una letra en el Box.
-            if(prod.getDescripcion().toLowerCase().trim().startsWith(jtBuscarProduc.getText()))
-                modelo.addRow(new Object[]{
-                    prod.getCodigo(),
-                    prod.getDescripcion(),
-                    prod.getPrecio(),
-                    prod.getRubro(),
-                    prod.getStock()
-                });
-            if(prod.getDescripcion().toUpperCase().trim().startsWith(jtBuscarProduc.getText()))
+            if(prod.getDescripcion().toLowerCase().trim().startsWith(jtBuscarProduc.getText().toLowerCase()))
                 modelo.addRow(new Object[]{
                     prod.getCodigo(),
                     prod.getDescripcion(),
@@ -148,8 +140,8 @@ public class BusquedaPorNombre_Ej2 extends javax.swing.JInternalFrame {
         modelo.addColumn("Codigo");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Precio");
-        modelo.addColumn("Categoria");
         modelo.addColumn("Stock");
+        modelo.addColumn("Categoria");
         jtProductos.setModel(modelo);
     }
     
@@ -164,8 +156,8 @@ public class BusquedaPorNombre_Ej2 extends javax.swing.JInternalFrame {
             p.getCodigo(),
             p.getDescripcion(),
             p.getPrecio(),
-            p.getRubro(),
-            p.getStock()
+            p.getStock(),
+            p.getRubro()
         });
     }
     

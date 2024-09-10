@@ -3,6 +3,7 @@ package grupo2_tp6_c2.Ejercicio2;
 import java.util.Iterator;
 import java.util.TreeSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
@@ -155,6 +156,11 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
         );
 
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grupo2_tp6_c2/Ejercicio2/buscar.png"))); // NOI18N
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(255, 51, 51));
@@ -225,11 +231,10 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboCat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(escritorioLayout.createSequentialGroup()
-                                .addComponent(jLtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(escritorioLayout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(17, 17, 17))
                     .addGroup(escritorioLayout.createSequentialGroup()
                         .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -288,31 +293,34 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-       try {
+        if (validarCamposVacios()) {
+            JOptionPane.showMessageDialog(this, "Faltan rellenar campos","Atención",JOptionPane.WARNING_MESSAGE);
+        }else
+        try {
             int codigo = Integer.parseInt(jTextCodigo.getText());
             String descripcion = jTextDescrip.getText();
             try {
                 double precio = Double.parseDouble(jTextPrecio.getText());
                 String rubro = jComboCat2.getSelectedItem().toString();
                 int stock = Integer.parseInt(jSpinnerStock.getValue().toString());
-                if (descripcion.equalsIgnoreCase("")) {
-                    JOptionPane.showMessageDialog(this, "No ha puesto una descripcion para el producto");
-                }else{
+                if (stock<=0)
+                    JOptionPane.showMessageDialog(this, "El stock del producto tiene que ser un número mayor a 0","Atención",JOptionPane.WARNING_MESSAGE);
+                else{
                     Producto_Ej2 producto = new Producto_Ej2(codigo,descripcion,precio,stock,rubro);
                     if (lista.add(producto)) {
                         lista.add(producto);
                         Limpiar();
+                        jTextCodigo.setText("");
                         Deshabilitar();
-                        borrarFilas();
-                        cargaTabla();
+                        JOptionPane.showMessageDialog(this, "Se ha guardado el producto exitosamente","Informe",JOptionPane.INFORMATION_MESSAGE);
                     }else
-                        JOptionPane.showMessageDialog(this, "Ese código ya existe");
+                        JOptionPane.showMessageDialog(this, "Ese código ya existe","Atención",JOptionPane.WARNING_MESSAGE);
                 }
             }catch(Exception e) {
-                JOptionPane.showMessageDialog(this, "El Precio tiene que ser un número");
+                JOptionPane.showMessageDialog(this, "El Precio tiene que ser un valor válido","Error",JOptionPane.ERROR_MESSAGE);
             }
         }catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "El Código tiene que ser un número entero");
+            JOptionPane.showMessageDialog(this, "El Código tiene que ser un número entero","Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -325,13 +333,7 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
         String rubro = jComboCat.getSelectedItem().toString();
         for(Producto_Ej2 prod : lista){  //Método para buscar productos colocando una letra en el Box.
             if(prod.getRubro().equalsIgnoreCase(rubro))
-                modelo.addRow(new Object[]{
-                    prod.getCodigo(),
-                    prod.getDescripcion(),
-                    prod.getPrecio(),
-                    prod.getRubro(),
-                    prod.getStock()
-                });
+                agregarFila(prod);
         }
     }//GEN-LAST:event_jComboCatItemStateChanged
 
@@ -344,8 +346,8 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
         jTextCodigo.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
         jTextDescrip.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
         jTextPrecio.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
-        jComboCat2.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 3));
-        jSpinnerStock.setValue(jTable1.getValueAt(jTable1.getSelectedRow(), 4));
+        jSpinnerStock.setValue(jTable1.getValueAt(jTable1.getSelectedRow(), 3));
+        jComboCat2.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 4));
         Habilitar();
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -355,7 +357,6 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        
         try {
             if (!jTextCodigo.getText().equalsIgnoreCase("")) {
                 int codigo = Integer.parseInt(jTextCodigo.getText());
@@ -364,26 +365,60 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
                     Producto_Ej2 p = iterator.next();
                     if (p.getCodigo() == codigo) {
                         iterator.remove();
-                        borrarFilas();
-                        cargaTabla();
-                        JOptionPane.showMessageDialog(this, "El producto se elimino exitosamente");
+                        JOptionPane.showMessageDialog(this, "El producto se elimino exitosamente","Informe",JOptionPane.INFORMATION_MESSAGE);
                         break;
                     }
                     if (!iterator.hasNext()) {
-                        JOptionPane.showMessageDialog(this, "No se ha encontrado a ningún producto con ese Código al eliminar");
+                        JOptionPane.showMessageDialog(this, "No se ha encontrado a ningún producto con ese Código al eliminar","Atención",JOptionPane.WARNING_MESSAGE);
                         Deshabilitar();
                     }
                 }
             }else {
-                JOptionPane.showMessageDialog(this, "Se requiere el Código del producto que desea eliminar");
+                JOptionPane.showMessageDialog(this, "Se requiere el Código del producto que desea eliminar","Atención",JOptionPane.WARNING_MESSAGE);
                 Deshabilitar();
             }
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(this, "El Código tiene que ser un número entero");
+            JOptionPane.showMessageDialog(this, "El Código tiene que ser un número entero","Error",JOptionPane.ERROR_MESSAGE);
             Deshabilitar();
         }
-        Limpiar();
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        if (!jTextCodigo.getText().equalsIgnoreCase("")) {
+            try {
+                int codigo = Integer.parseInt(jTextCodigo.getText());
+                borrarFilas();
+                boolean ausente = true;
+                for (Producto_Ej2 p: lista) {
+                    if (codigo==p.getCodigo()) {
+                        agregarFila(p);
+                        ausente = false;
+                    }
+                }
+                if (ausente) {
+                    JOptionPane.showMessageDialog(this, "No se ha encontrado a ningún producto con ese código","Atención",JOptionPane.WARNING_MESSAGE);
+                }
+            }catch(Exception e) {
+                JOptionPane.showMessageDialog(this, "El Código tiene que ser un número entero","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }else
+        if (!jTextDescrip.getText().equalsIgnoreCase("")) {
+            borrarFilas();
+            boolean ausente = true;
+            for (Producto_Ej2 p: lista) {
+                if(p.getDescripcion().toLowerCase().trim().startsWith(jTextDescrip.getText().toLowerCase())){
+                    agregarFila(p);
+                    ausente = false;
+                }
+            }
+            if (ausente) {
+                JOptionPane.showMessageDialog(this, "No se ha encontrado a ningún producto con esa descripción","Atención",JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Se requiere de un código o descripción del producto que desea buscar","Atención",JOptionPane.WARNING_MESSAGE);
+            Deshabilitar();
+        }
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void armarCabecera(){
         modelo.addColumn("Codigo");
@@ -405,8 +440,8 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
             p.getCodigo(),
             p.getDescripcion(),
             p.getPrecio(),
-            p.getRubro(),
-            p.getStock()
+            p.getStock(),
+            p.getRubro()
         });
     }
     
@@ -422,18 +457,21 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
     }
     
     private void Habilitar() {
-        jTextDescrip.setEnabled(true);
         jTextPrecio.setEnabled(true);
         jComboCat2.setEnabled(true);
         jSpinnerStock.setEnabled(true);
         jbGuardar.setEnabled(true);
     }
     private void Deshabilitar() {
-        jTextDescrip.setEnabled(false);
         jTextPrecio.setEnabled(false);
         jComboCat2.setEnabled(false);
         jSpinnerStock.setEnabled(false);
         jbGuardar.setEnabled(false);
+    }
+    
+    private boolean validarCamposVacios() {
+        return jTextCodigo.getText().equalsIgnoreCase("")||jTextDescrip.getText().equalsIgnoreCase("")||
+                jTextPrecio.getText().equalsIgnoreCase("");
     }
 //public class ImagenFondo extends JPanel{
 //    

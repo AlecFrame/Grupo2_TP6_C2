@@ -135,8 +135,8 @@ public class listadoPorRubro_Ej2 extends javax.swing.JInternalFrame {
         modelo.addColumn("Codigo");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Precio");
-        modelo.addColumn("Categoria");
         modelo.addColumn("Stock");
+        modelo.addColumn("Categoria");
         jTable1.setModel(modelo);
     }
     
@@ -151,8 +151,8 @@ public class listadoPorRubro_Ej2 extends javax.swing.JInternalFrame {
             p.getCodigo(),
             p.getDescripcion(),
             p.getPrecio(),
-            p.getRubro(),
-            p.getStock()
+            p.getStock(),
+            p.getRubro()
         });
     }
     
