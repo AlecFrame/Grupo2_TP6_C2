@@ -121,6 +121,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfHasta">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfHastaKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jlY">
       <Properties>
@@ -131,6 +134,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfDesde">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfDesdeKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jlEntre">
       <Properties>

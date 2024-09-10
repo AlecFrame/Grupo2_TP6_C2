@@ -64,8 +64,20 @@ public class BusquedaPorPrecio_Ej2 extends javax.swing.JInternalFrame {
             }
         });
 
+        jtfHasta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfHastaKeyReleased(evt);
+            }
+        });
+
         jlY.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jlY.setText("y");
+
+        jtfDesde.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfDesdeKeyReleased(evt);
+            }
+        });
 
         jlEntre.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jlEntre.setText("Entre:");
@@ -138,6 +150,50 @@ public class BusquedaPorPrecio_Ej2 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Ingrese valores válidos");
         }
     }//GEN-LAST:event_jbBusquedaActionPerformed
+
+    private void jtfDesdeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDesdeKeyReleased
+        try{
+            Long desde = Long.parseLong(jtfDesde.getText());
+            Long hasta = Long.parseLong(jtfHasta.getText());
+            borrarFilas();
+            for (Producto_Ej2 p: lista){
+                if((desde<=p.getPrecio()&hasta>=p.getPrecio())||(desde>=p.getPrecio()&hasta<=p.getPrecio())){
+                    modelo.addRow(new Object[]{
+                        p.getCodigo(),
+                        p.getDescripcion(),
+                        p.getPrecio(),
+                        p.getStock(),
+                        p.getRubro()
+                    });
+                }
+            }
+        }catch(Exception e) {
+            borrarFilas();
+            cargaTabla();
+        }
+    }//GEN-LAST:event_jtfDesdeKeyReleased
+
+    private void jtfHastaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfHastaKeyReleased
+        try{
+            Long desde = Long.parseLong(jtfDesde.getText());
+            Long hasta = Long.parseLong(jtfHasta.getText());
+            borrarFilas();
+            for (Producto_Ej2 p: lista){
+                if((desde<=p.getPrecio()&hasta>=p.getPrecio())||(desde>=p.getPrecio()&hasta<=p.getPrecio())){
+                    modelo.addRow(new Object[]{
+                        p.getCodigo(),
+                        p.getDescripcion(),
+                        p.getPrecio(),
+                        p.getStock(),
+                        p.getRubro()
+                    });
+                }
+            }
+        }catch(Exception e) {
+            borrarFilas();
+            cargaTabla();
+        }
+    }//GEN-LAST:event_jtfHastaKeyReleased
     
     private void armarCabecera(){
         modelo.addColumn("Codigo");

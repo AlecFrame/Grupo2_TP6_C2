@@ -3,13 +3,10 @@ package grupo2_tp6_c2.Ejercicio2;
 import java.util.Iterator;
 import java.util.TreeSet;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
 
-//    ImagenFondo imagenGestion= new ImagenFondo();
-    
     TreeSet<Producto_Ej2> lista = new TreeSet<>();
     
     private DefaultTableModel modelo = new DefaultTableModel(){
@@ -19,7 +16,6 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
     };
     
     public GestionDeProductos_Ej2(TreeSet<Producto_Ej2> lista) {
-//        this.setContentPane(imagenGestion);
         initComponents();
         this.lista = lista;
         setClosable(true);
@@ -339,7 +335,9 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         Limpiar();
+        jTextCodigo.setText("");
         Habilitar();
+        jTextDescrip.setEnabled(true);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -354,6 +352,7 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
         borrarFilas();
         cargaTabla();
+        jTextDescrip.setEnabled(true);
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
@@ -371,15 +370,18 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
                     if (!iterator.hasNext()) {
                         JOptionPane.showMessageDialog(this, "No se ha encontrado a ningún producto con ese Código al eliminar","Atención",JOptionPane.WARNING_MESSAGE);
                         Deshabilitar();
+                        jTextDescrip.setEnabled(false);
                     }
                 }
             }else {
                 JOptionPane.showMessageDialog(this, "Se requiere el Código del producto que desea eliminar","Atención",JOptionPane.WARNING_MESSAGE);
                 Deshabilitar();
+                jTextDescrip.setEnabled(false);
             }
         }catch(Exception e) {
             JOptionPane.showMessageDialog(this, "El Código tiene que ser un número entero","Error",JOptionPane.ERROR_MESSAGE);
             Deshabilitar();
+            jTextDescrip.setEnabled(false);
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
@@ -418,6 +420,7 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Se requiere de un código o descripción del producto que desea buscar","Atención",JOptionPane.WARNING_MESSAGE);
             Deshabilitar();
         }
+        jTextDescrip.setEnabled(true);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void armarCabecera(){
@@ -473,27 +476,6 @@ public class GestionDeProductos_Ej2 extends javax.swing.JInternalFrame {
         return jTextCodigo.getText().equalsIgnoreCase("")||jTextDescrip.getText().equalsIgnoreCase("")||
                 jTextPrecio.getText().equalsIgnoreCase("");
     }
-//public class ImagenFondo extends JPanel{
-//    
-//    private Image miImagen;
-//    
-//    
-//    public void paintComponent(Graphics g){
-//        ImageIcon icono = new ImageIcon(getClass().getResource("imagesGP.png"));
-//        Image miImagen = icono.getImage();
-//        
-//                g.drawImage(miImagen, 0, 0, getWidth(), getHeight(), this);
-//                setOpaque(false);
-//                super.paint(g);
-//            }
-    
-//    public void initComponents(){
-//        
-//        jMenuAdmin = new javax.swing.JMenu();
-//        
-//        
-//            
-//        };
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
